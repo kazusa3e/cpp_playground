@@ -1,3 +1,10 @@
 ---
 
-Checks: "*,-llvm*"
+Checks: "*,
+  -llvm*,
+  -fuchsia*,
+  -readability-identifier-length,
+  -bugprone-chained-comparison"
+
+HeaderFilterRegex: '^(?!.*/build/)(?!.*/\.cache/)(?!.*/_deps/).*(src|include|tests)/.*'
+SystemHeaders: false

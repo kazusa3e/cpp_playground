@@ -7,5 +7,8 @@ project(
     LANGUAGES CXX
 )
 
+# disable cxx20 modules
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
+
 add_subdirectory(src)
 add_subdirectory(tests)

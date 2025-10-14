@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-std::size_t fib(unsigned n);
+auto fib(unsigned n) -> std::size_t;
 
 #endif
