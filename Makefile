@@ -2,7 +2,7 @@ SOURCES := $(shell fd -E build '\.(h|hpp|cc)$$')
 
 .PHONY: build
 build:
-	cmake --build build -j$(nproc)
+	cmake --build build -j$(shell nproc)
 
 .PHONY: test
 test: build
