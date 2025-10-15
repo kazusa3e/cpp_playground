@@ -2,7 +2,7 @@
 
 #include "your_project_name/fib.hpp"
 
-TEST_CASE("Sample test case", "[fib]") {
+TEST_CASE("Simple test case", "[fib]") {
     REQUIRE(fib(0) == 0);
     REQUIRE(fib(1) == 1);
     REQUIRE(fib(2) == 1);
