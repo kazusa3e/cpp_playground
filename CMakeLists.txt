@@ -10,5 +10,9 @@ project(
 # disable cxx20 modules
 set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 
+add_library(mylib INTERFACE)
+target_include_directories(mylib INTERFACE ${CMAKE_SOURCE_DIR}/include)
+target_compile_definitions(mylib INTERFACE "DEBUG=$<IF:$<CONFIG:Debug>,1,0>")
+
 add_subdirectory(src)
 add_subdirectory(tests)

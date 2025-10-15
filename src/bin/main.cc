@@ -1,9 +1,18 @@
+#include <benchmark/benchmark.hpp>
 #include <fib/fib.hpp>
-#include <format>
-#include <iostream>
 
 auto main(int /*argc*/, const char* /*argv*/[]) -> int {
-    const auto n = 30;
-    std::cout << std::format("fib({}) = {}", n, fib(n)) << '\n';
+    {
+        BENCHMARK("fib(50)");
+        [[maybe_unused]] const auto _ = fib(50);
+    }
+    {
+        BENCHMARK("fib_memo(50)");
+        [[maybe_unused]] const auto _ = fib_memo(50);
+    }
+    {
+        BENCHMARK("fib_calc(50)");
+        [[maybe_unused]] const auto _ = fib_calc(50);
+    }
     return 0;
 }
