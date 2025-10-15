@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 4.0.0)
 
 project(
-    YOUR_PROJECT_NAME
+    CPP_PLAYGROUND
     VERSION 0.1.0
-    DESCRIPTION "YOUR_PROJECT_DESCRIPTION"
+    DESCRIPTION "A C++ project to play around with C++ features"
     LANGUAGES CXX
 )
 

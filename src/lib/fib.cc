@@ -1,5 +1,5 @@
 #include <cstddef>
-#include <your_project_name/fib.hpp>
+#include <fib/fib.hpp>
 
 auto fib(unsigned n) -> std::size_t {  // NOLINT(misc-no-recursion)
     if (n == 0 || n == 1) {

@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "your_project_name/fib.hpp"
+#include "fib/fib.hpp"
 
 TEST_CASE("Simple test case", "[fib]") {
     REQUIRE(fib(0) == 0);
