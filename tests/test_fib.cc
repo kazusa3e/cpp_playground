@@ -15,3 +15,23 @@ TEST_CASE("Simple test case", "[fib]") {
     REQUIRE(fib(9) == 34);
     REQUIRE(fib(10) == 55);
 }
+
+TEST_CASE("Sample test case for three implementations", "[fib]") {
+    REQUIRE(fib(0) == 0);
+    REQUIRE(fib(10) == 55);
+    REQUIRE(fib(20) == 6765);
+    REQUIRE(fib(30) == 832040);
+    REQUIRE(fib(40) == 102334155);
+
+    REQUIRE(fib_memo(0) == 0);
+    REQUIRE(fib_memo(10) == 55);
+    REQUIRE(fib_memo(20) == 6765);
+    REQUIRE(fib_memo(30) == 832040);
+    REQUIRE(fib_memo(40) == 102334155);
+
+    REQUIRE(fib_calc(0) == 0);
+    REQUIRE(fib_calc(10) == 55);
+    REQUIRE(fib_calc(20) == 6765);
+    REQUIRE(fib_calc(30) == 832040);
+    REQUIRE(fib_calc(40) == 102334155);
+}
