@@ -3,6 +3,7 @@
 Checks: "*,
   -llvm*,
   -fuchsia*,
+  -altera*,
   -readability-identifier-length,
   -bugprone-chained-comparison"
 
