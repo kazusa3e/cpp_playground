@@ -22,4 +22,4 @@ lint: clang-tidy-check clang-format-check
 
 .PHONY: clean
 clean:
-	rm -rf build
+	cmake --build build --target clean
