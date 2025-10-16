@@ -4,6 +4,7 @@ Checks: "*,
   -llvm*,
   -fuchsia*,
   -altera*,
+  -boost*,
   -readability-identifier-length,
   -bugprone-chained-comparison"
 
