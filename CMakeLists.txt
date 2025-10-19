@@ -12,7 +12,13 @@ set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 
 add_library(mylib INTERFACE)
 target_include_directories(mylib INTERFACE ${CMAKE_SOURCE_DIR}/include)
-target_compile_definitions(mylib INTERFACE "DEBUG=$<IF:$<CONFIG:Debug>,1,0>")
+target_compile_features(mylib INTERFACE cxx_std_20)
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(mylib INTERFACE OPTIM_LEVEL="O0")
+elseif (CMAKE_BUILD_TYPE STREQUAL "Release")
+    target_compile_definitions(mylib INTERFACE OPTIM_LEVEL="O3")
+endif()
 
 add_subdirectory(src)
 add_subdirectory(tests)

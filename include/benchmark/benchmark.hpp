@@ -2,16 +2,14 @@
 #define BENCHMARK_HPP
 
 #include <chrono>
+#include <format>
+#include <ios>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <utility>
 
 #include "../others/noncopyable.hpp"
-
-#if defined(DEBUG) && DEBUG == 1
-#warning \
-    "Benchmark should NOT run in Debug mode; consider checkout to Release mode."
-#endif
 
 // TODO(kazusa): support iteration
 // NOLINTBEGIN(hicpp-special-member-functions,cppcoreguidelines-special-member-functions)
@@ -19,22 +17,21 @@ class benchmark : public noncopyable {
     // NOLINTEND(hicpp-special-member-functions,cppcoreguidelines-special-member-functions)
    public:
     benchmark() = delete;
-    explicit benchmark(std::string name) : name_(std::move(name)) {
-#if defined(DEBUG) && DEBUG == 1
-        throw std::runtime_error(
-            "Benchmark should NOT run in Debug mode. do nothing.");
-#endif
-    }
+    explicit benchmark(std::string name) : name_(std::move(name)) {}
     ~benchmark() {
-#if defined(DEBUG) && DEBUG == 1
-// do nothing
-#else
+#ifdef OPTIM_LEVEL
+        std::cout << "[BMK] The optimization level is: " << OPTIM_LEVEL << '\n';
+#endif
         const auto end = std::chrono::high_resolution_clock::now();
         const auto dur =
             std::chrono::duration_cast<std::chrono::microseconds>(end - start_)
                 .count();
-        std::cout << "[BMK] Task " << name_ << " took " << dur << " us" << '\n';
-#endif
+        std::stringstream ss;
+        ss.imbue(std::locale("en_US.UTF-8"));
+        ss << std::format("[BMK] Task `\033[7m{}\033[0m` took ", name_);
+        ss << std::fixed << "\033[4m" << dur << "\033[0m";
+        ss << " us\n";
+        std::cout << ss.str();
     }
 
    private:

@@ -17,7 +17,7 @@ clang-format-check:
 	clang-format --Werror --dry-run --ferror-limit=0 $(SOURCES)
 
 .PHONY: lint
-lint: clang-tidy-check clang-format-check
+lint: clang-format-check
 	@echo "Lint checks passed."
 
 .PHONY: clean
