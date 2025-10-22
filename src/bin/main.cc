@@ -1,11 +1,11 @@
 #include <benchmark/benchmark.hpp>
 #include <fib/fib.hpp>
 #include <format>
+#include <logger/logger.hpp>
 #include <memory>
 #include <numeric>
+#include <others/utils.hpp>
 #include <vector>
-
-#include "others/utils.hpp"
 
 namespace {
 auto benchmark_fib() -> void {
@@ -53,11 +53,15 @@ auto benchmark_sum(std::size_t N) -> void {
         std::cout << std::format("sum is: {}", *sum) << '\n';
     }
 }
+
+auto test() -> void { dbg("hello {}", "bob"); }
 }  // namespace
 
 auto main(int /*argc*/, const char* /*argv*/[]) -> int {
     // benchmark_fib();
-    benchmark_sum(
-        4e8);  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+    // benchmark_sum(
+    //     4e8);  //
+    //     NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+    test();
     return 0;
 }
