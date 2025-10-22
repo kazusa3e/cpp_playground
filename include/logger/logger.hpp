@@ -29,10 +29,10 @@ static constexpr std::array<std::string_view, 5> level_names = {
 
 template <>
 struct std::formatter<std::thread::id> {
-    static constexpr auto parse(std::format_parse_context &ctx) {
+    static constexpr auto parse(std::format_parse_context& ctx) {
         return ctx.begin();
     }
-    static auto format(const std::thread::id &tid, std::format_context &ctx) {
+    static auto format(const std::thread::id& tid, std::format_context& ctx) {
         std::ostringstream oss;
         oss << tid;
         return std::format_to(ctx.out(), "{}", oss.str());
@@ -45,9 +45,9 @@ class logger : noncopyable {
     void set_level(log_level level) { level_ = level; }
 
     template <typename... Args>
-    void log(log_level level, const std::source_location &loc,
+    void log(log_level level, const std::source_location& loc,
              std::string_view fmt,
-             Args &&...args) {  // NOLINT(cppcoreguidelines-missing-std-forward)
+             Args&&... args) {  // NOLINT(cppcoreguidelines-missing-std-forward)
         if (level < level_) {
             return;
         }
@@ -76,7 +76,7 @@ class logger : noncopyable {
    private:
     log_level level_{log_level::DEBUG};
     std::mutex mtx_;
-    std::ostream &os_{std::cout};
+    std::ostream& os_{std::cout};
 };
 
 #define dbg(fmt, ...)                                                    \

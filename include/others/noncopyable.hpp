@@ -6,11 +6,11 @@ class noncopyable {
     noncopyable() = default;
     ~noncopyable() = default;
 
-    noncopyable(const noncopyable &) = delete;
-    auto operator=(const noncopyable &) -> noncopyable & = delete;
+    noncopyable(const noncopyable&) = delete;
+    auto operator=(const noncopyable&) -> noncopyable& = delete;
 
-    noncopyable(noncopyable &&) = default;
-    auto operator=(noncopyable &&) -> noncopyable & = default;
+    noncopyable(noncopyable&&) = default;
+    auto operator=(noncopyable&&) -> noncopyable& = default;
 };
 
 #endif

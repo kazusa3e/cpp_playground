@@ -43,11 +43,11 @@ struct std::formatter<std::vector<T>> {  // NOLINT(cert-dcl58-cpp)
     static constexpr char DELIM = ',';
     static constexpr char BEGIN = '[';
     static constexpr char END = ']';
-    constexpr auto parse(std::format_parse_context &ctx)
+    constexpr auto parse(std::format_parse_context& ctx)
         -> decltype(ctx.begin()) {
         return ctx.begin();
     }
-    auto format(const std::vector<T> &vec, std::format_context &ctx) const
+    auto format(const std::vector<T>& vec, std::format_context& ctx) const
         -> decltype(ctx.out()) {
         auto out = ctx.out();
         *out++ = BEGIN;

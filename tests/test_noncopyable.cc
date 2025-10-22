@@ -13,8 +13,8 @@ class
     ~TestClass() = default;
 
     // Move operations are still allowed
-    TestClass(TestClass &&) = default;
-    auto operator=(TestClass &&) -> TestClass & = default;
+    TestClass(TestClass&&) = default;
+    auto operator=(TestClass&&) -> TestClass& = default;
 
     [[nodiscard]] auto get_value() const -> int { return value; }
 
